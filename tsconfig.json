@@ -19,9 +19,112 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
-  },
+
+            "@actions/*": [
+
+                "./src/actions/*"
+
+            ],
+
+            "@assets/*": [
+
+                "./src/assets/*"
+
+            ],
+
+            "@app/*": [
+
+                "./src/app/*"
+
+            ],
+
+            "@config/*": [
+
+                "./src/config/*"
+
+            ],
+
+            "@components/*": [
+
+                "./src/components/*"
+
+            ],
+
+            "@constants/*": [
+
+                "./src/constants/*"
+
+            ],
+
+            "@contexts/*": [
+
+                "./src/contexts/*"
+
+            ],
+
+            "@enums/*": [
+
+                "./src/enums/*"
+
+            ],
+
+            "@graphql/*": [
+
+                "./src/graphql/*"
+
+            ],
+
+            "@helpers/*": [
+
+                "./src/helpers/*"
+
+            ],
+
+            "@hooks/*": [
+
+                "./src/hooks/*"
+
+            ],
+
+            "@i18n/*": [
+
+                "./src/i18n/*"
+
+            ],
+
+            "@interfaces/*": [
+
+                "./src/interfaces/*"
+
+            ],
+
+            "@mocks/*": [
+
+                "./src/__mocks__/*"
+
+            ],
+
+            "@openapi/*": [
+
+                "./src/openapi/*"
+
+            ],
+
+            "@styles/*": [
+
+                "./src/styles/*"
+
+            ],
+
+            "@utils/*": [
+
+                "./src/utils/*"
+
+            ]
+
+        }
+
+    },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
