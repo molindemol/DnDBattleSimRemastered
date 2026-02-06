@@ -18,8 +18,8 @@ export default function BattleCarousel() {
     .concat(enemies)
     .toSorted(
       (a, b) =>
-        (a.initiativeRoll! + a.initiativeBonus!) -
-        (b.initiativeRoll! + b.initiativeBonus!)
+        (b.initiativeRoll! + b.initiativeBonus!) -
+        (a.initiativeRoll! + a.initiativeBonus!)
     )
   const isEmptyList = sortedListOfCharacters.length === 0;
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null)
