@@ -39,7 +39,6 @@ export default function BattleCarousel() {
           <SelectedCharacter
           character={selectedCharacter}
           updateCharacters={selectedCharacter.ally ? updatePlayers : updateEnemies}
-          removeCharacters={selectedCharacter.ally ? removePlayers : removeEnemies}
         />
         <BattleControls currentIndex={selectedIndex} setIndex={setSelectedIndex} listLength={sortedListOfCharacters.length} />
         <div className={css.battleList}>

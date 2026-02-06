@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 'use client'
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Character from '@interfaces/character';
 import css from './selected-character.module.scss'
 import Image from 'next/image';
@@ -8,11 +8,10 @@ import Image from 'next/image';
 interface SelectedCharacterProps{
   character: Character;
   updateCharacters: (id: string, changes: Partial<Character>) => void;
-  removeCharacters: (id: string) => void;
 }
 
 export default function SelectedCharacter(props: SelectedCharacterProps) {
-  const {character, updateCharacters, removeCharacters } = props;
+  const {character, updateCharacters } = props;
   const {id, name, image, ally, hp} = character
 
   const [currentHp, setCurrentHp] = useState<number>(hp ?? 0);
@@ -27,16 +26,6 @@ export default function SelectedCharacter(props: SelectedCharacterProps) {
     setCurrentHp(value);
     updateCharacters(id, { hp: value });
   } 
-
-  const handleDead = useCallback(() => {
-    if (ally){
-        updateCharacters(id, {initiativeRoll: null})
-    } else{
-      removeCharacters(id)
-    }
-          
-  },[removeCharacters, id, ally, updateCharacters])
-  
 
   return (
     <div className={css.root}>
