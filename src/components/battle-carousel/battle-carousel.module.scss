@@ -21,6 +21,18 @@
     }
 }
 
+.keyboardHint{
+    margin: -0.75rem 0 0;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+
+    // Touch devices have no arrow keys
+    @media (pointer: coarse){
+        display: none;
+    }
+}
+
 // The action bar: a dark leather rail the initiative order sits on
 .battleList{
     @include hidden-scrollbar;
