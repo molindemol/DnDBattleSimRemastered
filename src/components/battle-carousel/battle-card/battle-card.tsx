@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 import Character from '@interfaces/character';
 import css from './battle-card.module.scss'
-import Image from 'next/image';
+import CharacterImage from '@components/character-image/character-image';
 
 interface BattleCardProps{
   character: Character;
@@ -43,7 +43,7 @@ export default function BattleCard(props: BattleCardProps) {
   return (
     <div ref={rootRef} className={`${css.root} ${isSelected ? css.selected : ''}`}>
       <div>
-        <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
+        <CharacterImage className={css.image} image={image} name={name} />
         <p className={css.name}>{name}</p>
       </div>
 

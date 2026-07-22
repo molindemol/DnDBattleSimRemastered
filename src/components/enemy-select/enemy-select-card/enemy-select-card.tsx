@@ -3,7 +3,6 @@ import { ReactNode, useCallback } from "react";
 import css from './enemy-select-card.module.scss'
 import EnemyJson from "@interfaces/enemy-json";
 import Character from "@interfaces/character";
-import DefaultUserImage from '@assets/user.png'
 import TrashIcon from "@assets/icons/trash-icon";
 import { nextAvailableName } from "@utils/character-names";
 
@@ -23,7 +22,7 @@ export default function EnemySelectCard(props: EnemySelectCardProps): ReactNode{
             id: crypto.randomUUID(),
             name: nextAvailableName(enemy.race, enemies.map(e => e.name)),
             hp: enemy.hp,
-            image: enemy.image || DefaultUserImage,
+            image: enemy.image,
             initiativeRoll: null,
             initiativeBonus: enemy.initiative,
             ally: false

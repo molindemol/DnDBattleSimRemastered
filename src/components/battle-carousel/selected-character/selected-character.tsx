@@ -1,7 +1,7 @@
 'use client'
 import Character from '@interfaces/character';
 import css from './selected-character.module.scss'
-import Image from 'next/image';
+import CharacterImage from '@components/character-image/character-image';
 
 interface SelectedCharacterProps{
   character: Character;
@@ -20,7 +20,7 @@ export default function SelectedCharacter(props: SelectedCharacterProps) {
 
   return (
     <div className={css.root}>
-        <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
+        <CharacterImage className={css.image} image={image} name={name} />
         <div className={css.bottom}>
           <h1 className={css.name}>{name}</h1>
 
