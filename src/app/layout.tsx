@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import "@styles/globals.module.css";
-import  QueryClientProvider  from "@utils/react-query-provider";
+import "@styles/globals.css";
 import Navigation from "@components/navigation/navigation";
-
 
 export const metadata: Metadata = {
   title: "DnD Battle Sim",
@@ -16,12 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <QueryClientProvider>
-          <body >
-            <Navigation />
-            {children}
-          </body>
-      </QueryClientProvider>
+      <body>
+        <Navigation />
+        {children}
+      </body>
     </html>
   );
 }
