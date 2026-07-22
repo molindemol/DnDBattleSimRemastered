@@ -1,5 +1,5 @@
 'use client'
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import Character from '@interfaces/character';
 import css from './battle-card.module.scss'
 import Image from 'next/image';
@@ -14,6 +14,17 @@ interface BattleCardProps{
 export default function BattleCard(props: BattleCardProps) {
   const {character, updateCharacters, removeCharacters, isSelected } = props;
   const {id, name, image, ally, hp} = character
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isSelected) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    rootRef.current?.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
+  }, [isSelected]);
 
   const handleHpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value || '0', 10);
@@ -30,7 +41,7 @@ export default function BattleCard(props: BattleCardProps) {
   },[removeCharacters, id, ally, updateCharacters])
 
   return (
-    <div className={`${css.root} ${isSelected ? css.selected : ''}`}>
+    <div ref={rootRef} className={`${css.root} ${isSelected ? css.selected : ''}`}>
       <div>
         <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
         <p className={css.name}>{name}</p>
