@@ -5,19 +5,20 @@ import { Option } from '@constants/navigation-options';
 
 interface NavigationOptionProps{
    option: Option;
-   isActive: boolean
+   isActive: boolean;
 }
 
 export default function NavigationOption(props : NavigationOptionProps) {
   const {option, isActive} = props;
-  const {href, icon} = option;
-  return ( 
-    <Link href={href} style={{transform: isActive ? 'scale(1)' : 'scale(0.9)'}} className={css.root}>
-      <div className={css.iconContainer}>
-        {icon}
-      </div>
-        
+  const {href, icon, label} = option;
+  return (
+    <Link
+      href={href}
+      aria-current={isActive ? 'page' : undefined}
+      className={`${css.root} ${isActive ? css.active : ''}`}
+    >
+      <span className={css.circle}>{icon}</span>
+      <span className={css.label}>{label}</span>
     </Link>
-    
   );
 }

@@ -13,10 +13,10 @@
     gap: 1.5rem;
     width: min(72rem, 100%);
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 6rem 1.5rem 1.5rem;
 
     @media (max-width: $bp-sm){
-        padding: 7.5rem 0.75rem 1rem;
+        padding: 6rem 0.75rem 1rem;
         gap: 1rem;
     }
 }

@@ -6,7 +6,7 @@
     flex-direction: column;
     padding: 1.5rem;
     gap: 1.25rem;
-    height: min(46rem, calc(100dvh - 3rem));
+    height: min(46rem, calc(100dvh - 8rem));
 
     @media (max-width: $bp-md){
         height: auto;

@@ -4,16 +4,16 @@
     min-height: 100dvh;
     display: grid;
     gap: 2rem;
-    padding: 2rem 2rem 2rem 8rem;
+    padding: 6rem 2rem 2rem;
     grid-template-columns: 1.4fr 1fr;
     align-items: center;
-    max-width: 100rem;
+    max-width: 90rem;
     margin: 0 auto;
 
     @media (max-width: $bp-md){
         grid-template-columns: 1fr;
         align-items: start;
-        padding: 7.5rem 1rem 1.5rem;
+        padding: 6rem 1rem 1.5rem;
         gap: 1.5rem;
     }
 }
