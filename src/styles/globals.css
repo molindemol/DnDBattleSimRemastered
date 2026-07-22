@@ -1,4 +1,23 @@
-html,body{
+:root{
+    --ink: #2b1d12;
+    --ink-soft: #5c452c;
+    --ink-line: rgba(43, 29, 18, 0.55);
+    --parchment: #f6ecd7;
+    --parchment-deep: #e9d5ae;
+    --blood: #8a2116;
+    --blood-deep: #6d1a11;
+    --gold: #b98a2e;
+    --panel-shadow: 0 2px 3px rgba(43, 29, 18, 0.25), 0 12px 28px rgba(43, 29, 18, 0.35);
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+html,
+body{
     margin: 0;
     padding: 0;
 }
@@ -9,4 +28,27 @@ body{
     background-size: cover;
     background-position: center;
     background-color: #b5976b;
+    color: var(--ink);
+    font-family: var(--font-body), Georgia, serif;
+    font-size: 1.0625rem;
+}
+
+button,
+input{
+    font: inherit;
+    color: inherit;
+}
+
+:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
 }
