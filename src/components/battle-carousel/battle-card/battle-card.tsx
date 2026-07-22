@@ -30,16 +30,16 @@ export default function BattleCard(props: BattleCardProps) {
   },[removeCharacters, id, ally, updateCharacters])
 
   return (
-    <div className={css.root} style={{transform: isSelected ? 'translateY(-.9rem)' : ''}}>
+    <div className={`${css.root} ${isSelected ? css.selected : ''}`}>
       <div>
         <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
-        <p style={{fontSize: name.length > 10 ? '10px' : ''}}>{name}</p>
+        <p className={css.name}>{name}</p>
       </div>
 
         <div className={css.bottom}>
             {!ally && (
               <div className={css.health}>
-                <label>HP:</label>
+                <label>HP</label>
                 <input type="number" min={0} value={hp ?? 0} onChange={handleHpChange} />
               </div>
             )}

@@ -16,8 +16,8 @@ export default function AddPlayerButton(props : AddPlayerButtonProps): ReactNode
         addCharacters({ id: crypto.randomUUID(), name: "", image: DefaultUserImage, initiativeRoll: null, ally: true, initiativeBonus: null })
     },[addCharacters])
     return (
-    <button onClick={handleClick} className={css.root}>
-        <h1>+</h1>
+    <button onClick={handleClick} className={css.root} aria-label="Add player">
+        +
     </button>
     )
 }

@@ -1,35 +1,48 @@
+@use 'tokens' as *;
+
 .root{
+    @include card;
     display: flex;
-    border: 4px solid black;
     gap: 1rem;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     align-items: center;
     position: relative;
-    background-color: white;
+
+    input{
+        min-width: 0;
+        flex: 1;
+        padding: 0.4rem 0.6rem;
+        background: rgba(255, 252, 243, 0.85);
+        border: 1px solid var(--ink-soft);
+        border-radius: 3px;
+    }
 }
 
 .image{
     height: 3rem;
     width: 3rem;
+    flex-shrink: 0;
     object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--ink-soft);
 }
 
-
-.remove .imageBin{
-    height: 1.5rem;
-    width: auto;
+.remove{
+    @include ghost-button;
+    display: flex;
+    align-items: center;
+    padding: 0.45rem;
+    color: var(--blood);
 }
 
 .imageButton{
-    padding: 0.5rem;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
+    @include ghost-button;
+    padding: 0.45rem 0.75rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
 
-    &:hover{
-        background-color: #45a049;
+    @media (max-width: $bp-sm){
+        font-size: 0.85rem;
     }
 }

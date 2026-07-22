@@ -22,11 +22,11 @@ export default function SelectedCharacter(props: SelectedCharacterProps) {
     <div className={css.root}>
         <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
         <div className={css.bottom}>
-          {name.length > 15 ? (<h2>{name}</h2>) : ( <h1>{name}</h1>) }
+          <h1 className={css.name}>{name}</h1>
 
             {!ally && (
               <div className={css.health}>
-                <label>HP:</label>
+                <label>HP</label>
                 <input type="number" min={0} value={hp ?? 0} onChange={handleHpChange} />
               </div>
             )}

@@ -14,27 +14,20 @@ export default function Navigation() {
 
     const [showList, setShowList] = useState<boolean>(false)
 
-    return ( 
-        <div className={css.root} style={{height: showList ? '24rem' : ''}}>
-        
+    return (
+        <nav className={`${css.root} ${showList ? css.open : ''}`}>
             {activeOption && (
-                <button onClick={() => setShowList(!showList)} className={css.active}>
+                <button onClick={() => setShowList(!showList)} className={css.active} aria-label="Toggle navigation">
                     <NavigationOption isActive={true} option={activeOption} />
                 </button>
             )}
-            <div >
-                {filteredOptions.map((option) => (<div className={css.listItem} key={option.id}>
-                                <NavigationOption  isActive={false} option={option}/>
-                        </div>
-                    )
-                )} 
+            <div className={css.list}>
+                {filteredOptions.map((option) => (
+                    <div className={css.listItem} key={option.id}>
+                        <NavigationOption isActive={false} option={option} />
+                    </div>
+                ))}
             </div>
-            
-           
-                
-          
-            
-        </div>
-        
+        </nav>
     );
 }

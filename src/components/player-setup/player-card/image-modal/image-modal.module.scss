@@ -1,63 +1,56 @@
+@use 'tokens' as *;
+
 .modalOverlay{
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background-color: rgba(24, 15, 8, 0.55);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
     z-index: 1000;
 }
 
 .modal{
-    background-color: white;
+    @include panel;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 500px;
-    width: 90%;
+    width: 100%;
 
     h2{
+        font-family: var(--font-display), serif;
+        font-weight: 400;
         margin-top: 0;
         margin-bottom: 1.5rem;
     }
 }
 
 .dropzone{
-    border: 3px dashed lightgray;
-    border-radius: 8px;
+    border: 2px dashed var(--ink-soft);
+    border-radius: 3px;
     padding: 2rem;
     text-align: center;
-    background-color: whitesmoke;
+    background-color: rgba(233, 213, 174, 0.35);
     margin-bottom: 1rem;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
     cursor: pointer;
     position: relative;
 
     p{
         margin: 0;
-        color: gray;
-        font-weight: 500;
+        color: var(--ink-soft);
     }
 
-    &:hover{
-        border-color: green;
-        background-color: rgb(238, 255, 238);
-    }
-
+    &:hover,
     &.dragOver{
-        border-color: green;
-        background-color: rgb(238, 255, 238);
-        border-width: 3px;
+        border-color: var(--gold);
+        background-color: rgba(185, 138, 46, 0.15);
     }
 }
 
 .fileInput{
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -67,11 +60,13 @@
 .imagePreview{
     text-align: center;
     margin-bottom: 1rem;
+
     img{
         height: 250px;
         width: 250px;
         object-fit: cover;
-        border-radius: 4px;
+        border-radius: 3px;
+        border: 2px solid var(--ink-soft);
     }
 }
 
@@ -82,34 +77,18 @@
 }
 
 .confirmButton{
-    padding: 0.5rem 1.5rem;
-    background-color: green;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-
-    &:hover:not(:disabled){
-        background-color: #449c48;
-    }
+    @include action-button;
+    font-size: 1.1rem;
 
     &:disabled{
-        background-color: #cccccc;
+        background: var(--ink-soft);
+        opacity: 0.5;
         cursor: not-allowed;
     }
 }
 
 .cancelButton{
-    padding: 0.5rem 1.5rem;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-
-    &:hover{
-        background-color: #da190b;
-    }
+    @include ghost-button;
+    padding: 0.55rem 1.5rem;
+    font-size: 1.1rem;
 }

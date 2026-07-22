@@ -29,7 +29,7 @@ export default function EnemySelectCard(props: EnemySelectCardProps): ReactNode{
 
     return (
         <button onClick={handleClick} className={css.root}>
-            <h1>{name}</h1>
+            {name}
         </button>
     )
 }

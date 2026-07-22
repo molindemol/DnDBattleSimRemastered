@@ -1,52 +1,66 @@
+@use 'tokens' as *;
+
 .root{
+    @include card;
     display: flex;
-    border: 4px solid black;
     gap: 1rem;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
     align-items: center;
     position: relative;
-    background-color: white;
 }
 
 .nameImgContainer{
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
     align-items: center;
-    h1,h2,h3{
-        margin: 0;
-    }
+    min-width: 0;
+}
+
+.name{
+    margin: 0;
+    font-family: var(--font-display), serif;
+    font-weight: 400;
+    font-size: clamp(1.05rem, 4vw, 1.5rem);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
 }
 
 .image{
     height: 3rem;
     width: 3rem;
+    flex-shrink: 0;
     object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--ink-soft);
 }
 
 .numberInputContainer{
     display: flex;
-    gap: 2rem;
+    gap: 1.25rem;
+    align-items: center;
+    flex-shrink: 0;
 
-    input {
-        width: 3rem;
-        font-size: large;
-        padding: 0.5rem 0.25rem;
-        text-align: center;
+    input{
+        @include number-input;
     }
 }
 
 .inputContainer{
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
     label{
-        font-weight: bold;
-        position: absolute;
-        transform: translateY(-1rem);
-        top: 0;
+        @include field-label;
+        text-align: center;
     }
 }
 
-.remove .imageBin{
-    height: 1.5rem;
-    width: auto;
+.remove{
+    @include ghost-button;
+    display: flex;
+    align-items: center;
+    padding: 0.45rem;
+    color: var(--blood);
 }

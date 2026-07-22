@@ -1,19 +1,17 @@
+@use 'tokens' as *;
+
 .root{
+    @include ghost-button;
     display: flex;
-    border: 4px solid black;
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    position: relative;
     flex-grow: 1;
-    height: min-content;
-    background-color: white;
-    cursor: pointer;
-    h1{
-        margin: 0;
-    }
+    padding: 0.5rem 1rem;
+    font-size: 1.15rem;
+    transition: transform 0.15s ease;
 
     &:hover{
-        background-color: whitesmoke;
+        transform: translateY(-2px);
     }
 }

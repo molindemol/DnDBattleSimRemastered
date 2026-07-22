@@ -55,7 +55,7 @@ export default function Rolls(props : RollsProps): ReactNode{
             )}
             
             <button onClick={handleClick} className={css.startButton}>
-                <h1>Confirm Rolls</h1>
+                Confirm Rolls
             </button>
         </div>
     </div>
