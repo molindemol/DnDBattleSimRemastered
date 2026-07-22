@@ -13,7 +13,7 @@ export default function AddPlayerButton(props : AddPlayerButtonProps): ReactNode
     
 
     const handleClick = useCallback(() => {
-        addCharacters({ id: crypto.randomUUID(), name: "", image:  DefaultUserImage , initiativeRoll: null, ally: true, initiativeBonus: null } as Character)
+        addCharacters({ id: crypto.randomUUID(), name: "", image: DefaultUserImage, initiativeRoll: null, ally: true, initiativeBonus: null })
     },[addCharacters])
     return (
     <button onClick={handleClick} className={css.root}>
