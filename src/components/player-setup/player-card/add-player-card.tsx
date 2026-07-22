@@ -1,8 +1,8 @@
 'use client'
 import { ReactNode, useCallback, useState } from "react";
 import css from './add-player-card.module.scss'
-import trashBin from '@assets/bin.png'
-import Image from 'next/image'
+import CharacterImage from '@components/character-image/character-image'
+import TrashIcon from '@assets/icons/trash-icon'
 import ImageModal from './image-modal/image-modal'
 import Character from "@interfaces/character";
 
@@ -37,10 +37,10 @@ export default function AddPlayerCard(props: PlayerCardProps): ReactNode{
     return (
     <>
         <div className={css.root}>
-            <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
+            <CharacterImage className={css.image} image={image} name={name} />
             <input type="text" placeholder="name" value={name} onChange={handleNameChange} />
             <button onClick={handleImageButtonClick} className={css.imageButton}>Change Image</button>
-            <button onClick={handleDelete} className={css.remove}><Image className={css.imageBin} alt="remove button" src={trashBin} /></button>
+            <button onClick={handleDelete} className={css.remove} aria-label={`Remove ${name}`}><TrashIcon /></button>
         </div>
         <ImageModal 
             isOpen={showModal} 

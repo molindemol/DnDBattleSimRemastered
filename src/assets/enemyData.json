@@ -61,7 +61,7 @@
   },
   {
     "race": "Cow",
-    "image": "https://b1157417.smushcdn.com/1157417/wp-content/uploads/2024/07/cow-close-up-of-dairy-cattle-825x550.jpg?lossy=1&strip=1&webp=0",
+    "image": "",
     "initiative": 0,
     "hp": 15
   },
@@ -79,7 +79,7 @@
   },
   {
     "race": "Giant Crab",
-    "image": "https://i.ytimg.com/vi/VZIc5jXss-g/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAmYOZ6oKCJC9r7k-ZzSeAJ8BwHpg",
+    "image": "",
     "initiative": 2,
     "hp": 13
   },
@@ -121,7 +121,7 @@
   },
   {
     "race": "Hunter Shark",
-    "image": "https://i.pinimg.com/474x/21/d7/6b/21d76b2686e5b2a299e2f54f15849a8a.jpg",
+    "image": "",
     "initiative": 1,
     "hp": 45
   },
@@ -175,7 +175,7 @@
   },
   {
     "race": "Veteran",
-    "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9ed80871-fac2-4e1b-99bc-a0f5b0d00eac/dgi8dfr-035db929-f21d-4f6a-90c1-30e57252d874.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzllZDgwODcxLWZhYzItNGUxYi05OWJjLWEwZjViMGQwMGVhY1wvZGdpOGRmci0wMzVkYjkyOS1mMjFkLTRmNmEtOTBjMS0zMGU1NzI1MmQ4NzQuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.H1B9UVoovZQmseZk5rB-tYBA7WA9rc0w9CjUBVZA7vY",
+    "image": "",
     "initiative": 1,
     "hp": 58
   },

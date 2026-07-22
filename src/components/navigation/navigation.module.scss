@@ -1,27 +1,22 @@
+@use 'tokens' as *;
 
-.root {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  background-color: brown;
-  height: 5.2rem;
-  border-radius: 20rem;
-  padding: 1rem;
-  left: 1rem;
-  gap:1.5rem;
-  top: 1rem;
-  z-index: 4;
-  transition: height 1s;
-  overflow: hidden;
-  box-shadow:
-      0 1px 1px hsl(0deg 0% 0% / 0.075),
-      0 2px 2px hsl(0deg 0% 0% / 0.075),
-      0 4px 4px hsl(0deg 0% 0% / 0.075),
-      0 8px 8px hsl(0deg 0% 0% / 0.075),
-      0 16px 16px hsl(0deg 0% 0% / 0.075)
-  ;
+// A travel route across the map: one node per step, dotted trail between
+.root{
+    position: fixed;
+    top: 0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-start;
+    z-index: 4;
 }
 
-.active{
-  all: unset;
+.connector{
+    width: 2.25rem;
+    border-top: 3px dotted var(--ink-soft);
+    margin-top: 1.45rem;
+
+    @media (max-width: $bp-sm){
+        width: 0.9rem;
+    }
 }

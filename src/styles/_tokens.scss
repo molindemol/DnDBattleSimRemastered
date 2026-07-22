@@ -1,0 +1,83 @@
+$bp-lg: 1100px;
+$bp-md: 900px;
+$bp-sm: 640px;
+
+// Cartouche frame: ink border with an inner engraved rule, like map legends
+@mixin panel {
+    background: var(--parchment);
+    border: 2px solid var(--ink);
+    border-radius: 3px;
+    box-shadow:
+        inset 0 0 0 4px var(--parchment),
+        inset 0 0 0 5px var(--ink-line),
+        var(--panel-shadow);
+}
+
+@mixin card {
+    background: var(--parchment);
+    border: 1px solid var(--ink-line);
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(43, 29, 18, 0.2), 0 3px 8px rgba(43, 29, 18, 0.18);
+}
+
+// Primary action: wax-seal red with display type
+@mixin action-button {
+    font-family: var(--font-display), serif;
+    font-size: 1.3rem;
+    letter-spacing: 0.05em;
+    background: var(--blood);
+    color: var(--parchment);
+    border: 1px solid var(--blood-deep);
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px rgba(246, 236, 215, 0.3), 0 2px 5px rgba(43, 29, 18, 0.35);
+    padding: 0.55rem 1.5rem;
+    cursor: pointer;
+
+    &:hover{
+        background: var(--blood-deep);
+    }
+}
+
+// Secondary action: parchment with ink rule
+@mixin ghost-button {
+    font-family: var(--font-display), serif;
+    letter-spacing: 0.04em;
+    background: var(--parchment);
+    color: var(--ink);
+    border: 1px solid var(--ink-soft);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(43, 29, 18, 0.25);
+    cursor: pointer;
+
+    &:hover{
+        background: var(--parchment-deep);
+    }
+}
+
+@mixin number-input {
+    width: 3.5rem;
+    padding: 0.4rem 0.25rem;
+    text-align: center;
+    font-family: var(--font-body), Georgia, serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: rgba(255, 252, 243, 0.85);
+    border: 1px solid var(--ink-soft);
+    border-radius: 3px;
+    color: var(--ink);
+}
+
+@mixin field-label {
+    font-family: var(--font-display), serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+}
+
+@mixin hidden-scrollbar {
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}

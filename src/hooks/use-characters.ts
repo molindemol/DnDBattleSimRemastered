@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 import { useState, useEffect, useCallback, useRef, Dispatch, SetStateAction } from "react";
 import Character from "@interfaces/character";
 

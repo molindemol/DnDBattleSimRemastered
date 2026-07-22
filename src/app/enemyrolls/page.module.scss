@@ -1,9 +1,19 @@
-.root
-{
-    height: 100vh;
+@use 'tokens' as *;
+
+.root{
+    min-height: 100dvh;
     display: grid;
     gap: 2rem;
-    padding: 0 2rem;
-    grid-template-columns: 1fr 0.7fr;
+    padding: 6rem 2rem 2rem;
+    grid-template-columns: 1.4fr 1fr;
     align-items: center;
+    max-width: 90rem;
+    margin: 0 auto;
+
+    @media (max-width: $bp-md){
+        grid-template-columns: 1fr;
+        align-items: start;
+        padding: 6rem 1rem 1.5rem;
+        gap: 1.5rem;
+    }
 }

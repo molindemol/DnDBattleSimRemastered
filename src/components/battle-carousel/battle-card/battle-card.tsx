@@ -1,9 +1,8 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 'use client'
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import Character from '@interfaces/character';
 import css from './battle-card.module.scss'
-import Image from 'next/image';
+import CharacterImage from '@components/character-image/character-image';
 
 interface BattleCardProps{
   character: Character;
@@ -15,19 +14,23 @@ interface BattleCardProps{
 export default function BattleCard(props: BattleCardProps) {
   const {character, updateCharacters, removeCharacters, isSelected } = props;
   const {id, name, image, ally, hp} = character
-
-  const [currentHp, setCurrentHp] = useState<number>(hp ?? 0);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-       setCurrentHp(hp ?? 0);
-  }, [hp]);
+    if (!isSelected) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    rootRef.current?.scrollIntoView({
+      behavior: reduceMotion ? 'auto' : 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
+  }, [isSelected]);
 
   const handleHpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value || '0', 10);
     if (Number.isNaN(value)) return;
-    setCurrentHp(value);
     updateCharacters(id, { hp: value });
-  } 
+  }
 
   const handleDead = useCallback(() => {
     if (ally){
@@ -35,22 +38,20 @@ export default function BattleCard(props: BattleCardProps) {
     } else{
       removeCharacters(id)
     }
-          
   },[removeCharacters, id, ally, updateCharacters])
-  
 
   return (
-    <div className={css.root} style={{transform: isSelected ? 'translateY(-.9rem)' : ''}}>
+    <div ref={rootRef} className={`${css.root} ${isSelected ? css.selected : ''}`}>
       <div>
-        <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
-        <p style={{fontSize: name.length > 10 ? '10px' : ''}}>{name}</p>
+        <CharacterImage className={css.image} image={image} name={name} />
+        <p className={css.name}>{name}</p>
       </div>
-        
+
         <div className={css.bottom}>
             {!ally && (
               <div className={css.health}>
-                <label>HP:</label>
-                <input type="number" min={0} value={currentHp} onChange={handleHpChange} />
+                <label>HP</label>
+                <input type="number" min={0} value={hp ?? 0} onChange={handleHpChange} />
               </div>
             )}
             <button onClick={handleDead}>Dead</button>

@@ -3,38 +3,48 @@ import { ReactNode, useCallback } from "react";
 import css from './enemy-select-card.module.scss'
 import EnemyJson from "@interfaces/enemy-json";
 import Character from "@interfaces/character";
+import TrashIcon from "@assets/icons/trash-icon";
+import { nextAvailableName } from "@utils/character-names";
 
 interface EnemySelectCardProps{
     enemy: EnemyJson;
     enemies: Character[];
     addEnemy: (c: Character) => void;
+    onRemove?: () => void;
 }
 
 export default function EnemySelectCard(props: EnemySelectCardProps): ReactNode{
-    const {enemy, enemies, addEnemy} = props
+    const {enemy, enemies, addEnemy, onRemove} = props
     const {race: name} = enemy
 
     const handleClick = useCallback(() => {
-        let newName = enemy.race
-        const existingCount = enemies.filter(e => e.name.startsWith(enemy.race)).length
-        if (existingCount > 0) {
-            newName = `${enemy.race} ${existingCount + 1}`
-        }
-        
         addEnemy({
             id: crypto.randomUUID(),
-            name: newName,
+            name: nextAvailableName(enemy.race, enemies.map(e => e.name)),
             hp: enemy.hp,
             image: enemy.image,
             initiativeRoll: null,
             initiativeBonus: enemy.initiative,
             ally: false
-        } as Character)
+        })
     }, [addEnemy, enemy, enemies])
+
+    if (onRemove) {
+        return (
+            <div className={css.customRoot}>
+                <button onClick={handleClick} className={css.customAdd}>
+                    {name}
+                </button>
+                <button onClick={onRemove} className={css.customRemove} aria-label={`Delete ${name}`}>
+                    <TrashIcon size={16} />
+                </button>
+            </div>
+        )
+    }
 
     return (
         <button onClick={handleClick} className={css.root}>
-            <h1>{name}</h1>
+            {name}
         </button>
     )
 }

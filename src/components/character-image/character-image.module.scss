@@ -1,0 +1,14 @@
+// span.fallback wint van de .image class van de parent op specificiteit
+span.fallback{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    background-color: var(--parchment-deep);
+    color: var(--ink-soft);
+
+    svg{
+        width: 55%;
+        height: 55%;
+    }
+}

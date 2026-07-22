@@ -22,7 +22,7 @@ export default function PlayerSetup(): ReactNode{
             <AddPlayerButton addCharacters={addCharacters} />
         </div>
         <button onClick={handleClick} className={css.startButton}>
-            <h1>Start Rolls</h1>
+            Start Rolls
         </button>
     </div>
     )

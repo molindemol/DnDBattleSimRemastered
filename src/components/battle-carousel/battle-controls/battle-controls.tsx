@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 'use client'
-import { Dispatch, SetStateAction, useCallback, useEffect } from 'react';
+import { Dispatch, SetStateAction, useCallback } from 'react';
 import css from './battle-controls.module.scss'
 
 interface BattleControlProps{
@@ -11,24 +10,12 @@ interface BattleControlProps{
 
 export default function BattleControls(props: BattleControlProps) {
   const {setIndex, listLength, currentIndex} = props;
-  const lastIndex = listLength - 1
   const handleNext = useCallback(() => {
-      setIndex(prev => prev + 1);
-  }, [setIndex])
+      setIndex((currentIndex + 1) % listLength);
+  }, [setIndex, currentIndex, listLength])
   const handlePrevious = useCallback(() => {
-      setIndex(prev => prev - 1);
-  }, [setIndex]);
-
-  useEffect(() => {
-    if(currentIndex > lastIndex){
-      setIndex(0)
-    }
-
-    if(currentIndex < 0){
-      setIndex(lastIndex)
-    }
-  },[setIndex, lastIndex , currentIndex])
-
+      setIndex((currentIndex - 1 + listLength) % listLength);
+  }, [setIndex, currentIndex, listLength]);
 
   return (
     <div className={css.root}>

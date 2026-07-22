@@ -1,9 +1,11 @@
 'use client'
 import css from './rolls.module.scss';
-import useCharacters, { UseCharactersHook } from "@hooks/use-characters";
+import { UseCharactersHook } from "@hooks/use-characters";
 import RollCharacterCard from "./roll-character-card/roll-character-card";
 import { ReactNode, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Character from '@interfaces/character';
+import { getBaseName, getNameNumber, numberedName } from '@utils/character-names';
 
 interface RollsProps{
     variant: "players" | "enemies";
@@ -19,18 +21,18 @@ export default function Rolls(props : RollsProps): ReactNode{
         const removedCharacter = characters.find(c => c.id === id)
         if (!removedCharacter) return
         removeCharacters(id)
-        
-        const baseNameMatch = removedCharacter.name.match(/^(.+?)\s*(\d+)?$/)
-        const baseName = baseNameMatch ? baseNameMatch[1].trim() : removedCharacter.name
 
+        const baseName = getBaseName(removedCharacter.name)
         const relatedCharacters = characters
-            .filter(c => c.id !== id && c.name.startsWith(baseName))
-            .sort((a, b) => a.name.localeCompare(b.name))
+            .map(c => ({ character: c, number: getNameNumber(c.name, baseName) }))
+            .filter((entry): entry is { character: Character, number: number } =>
+                entry.character.id !== id && entry.number !== null)
+            .sort((a, b) => a.number - b.number)
 
-        relatedCharacters.forEach((char, index) => {
-            const newName = index > 0 ? `${baseName} ${index + 1}` : baseName
-            if (char.name !== newName) {
-                updateCharacters(char.id, { name: newName })
+        relatedCharacters.forEach(({ character }, index) => {
+            const newName = numberedName(baseName, index + 1)
+            if (character.name !== newName) {
+                updateCharacters(character.id, { name: newName })
             }
         })
     }, [characters, removeCharacters, updateCharacters])
@@ -53,7 +55,7 @@ export default function Rolls(props : RollsProps): ReactNode{
             )}
             
             <button onClick={handleClick} className={css.startButton}>
-                <h1>Confirm Rolls</h1>
+                Confirm Rolls
             </button>
         </div>
     </div>

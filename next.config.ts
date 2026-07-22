@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  sassOptions: {
+    loadPaths: ["./src/styles"],
+  },
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
-      },
-      {
-        protocol: "http",
-        hostname: "**",
+        hostname: "www.dndbeyond.com",
       },
     ],
   },

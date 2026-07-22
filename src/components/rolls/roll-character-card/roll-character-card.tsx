@@ -1,9 +1,10 @@
 'use client'
-import { ReactNode, useCallback, } from "react";
+import { ReactNode, useCallback } from "react";
 import css from './roll-character-card.module.scss'
-import Image from 'next/image'
+import CharacterImage from "@components/character-image/character-image";
 import Character from "@interfaces/character";
-import trashBin from '@assets/bin.png'
+import TrashIcon from "@assets/icons/trash-icon";
+
 interface RollCharacterCardProps {
     variant: "players" | "enemies";
     character: Character;
@@ -22,8 +23,8 @@ export default function RollCharacterCard(props: RollCharacterCardProps): ReactN
     return (
         <div className={css.root}>
             <div className={css.nameImgContainer}>
-                <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
-                {name.length > 7 ? (<h2>{name}</h2>) : (<h1>{name}</h1>)}
+                <CharacterImage className={css.image} image={image} name={name} />
+                <h2 className={css.name}>{name}</h2>
             </div>
             <div className={css.numberInputContainer}>
                 <div className={css.inputContainer}>
@@ -49,15 +50,10 @@ export default function RollCharacterCard(props: RollCharacterCardProps): ReactN
                             const v = e.target.value
                             updateCharacters(id, { initiativeBonus: v === '' ? null : Number(v) })
                         }}
-                    /> 
-                    
+                    />
                 </div>) : (
-                <button onClick={handleDelete} className={css.remove}><Image className={css.imageBin} alt="remove button" src={trashBin} /></button>)}
+                <button onClick={handleDelete} className={css.remove} aria-label={`Remove ${name}`}><TrashIcon /></button>)}
             </div>
-                
-                
-            
-            
         </div>
     )
 }

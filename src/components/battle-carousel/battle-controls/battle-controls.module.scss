@@ -1,24 +1,15 @@
+@use 'tokens' as *;
+
 .root{
     display: flex;
-    border: 4px solid black;
-    gap: 4px;
+    gap: 1rem;
     align-items: center;
-    text-align: center;
-    padding: 0.5rem;
-    width: 20rem; 
+    width: min(24rem, 100%);
 
     button{
+        @include ghost-button;
         width: 100%;
-        background-color: white;
-        border: 4px solid black;
-        justify-content: center;
-        align-items: center;
-        padding: 0.20rem;
-        cursor: pointer;
-
-        &:hover{
-            background-color: whitesmoke;
-        }
-
+        padding: 0.5rem;
+        font-size: 1.15rem;
     }
 }
