@@ -1,5 +1,4 @@
-import BattleIcon from "@assets/icons/battle-icon copy";
-import DeleteSaveIcon from "@assets/icons/delete-save";
+import BattleIcon from "@assets/icons/battle-icon";
 import DiceEnemyIcon from "@assets/icons/dice-enemy-icon";
 import DiceUserIcon from "@assets/icons/dice-user-icon";
 import UserIcon from "@assets/icons/user-icon";
