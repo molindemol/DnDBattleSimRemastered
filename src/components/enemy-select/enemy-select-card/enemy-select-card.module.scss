@@ -15,3 +15,28 @@
         transform: translateY(-2px);
     }
 }
+
+// Custom enemies: gold-marked entry with its own delete button
+.customRoot{
+    display: flex;
+    flex-grow: 1;
+}
+
+.customAdd{
+    @include ghost-button;
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    font-size: 1.15rem;
+    border-left: 3px solid var(--gold);
+    border-radius: 3px 0 0 3px;
+    border-right: none;
+}
+
+.customRemove{
+    @include ghost-button;
+    display: flex;
+    align-items: center;
+    padding: 0 0.6rem;
+    color: var(--blood);
+    border-radius: 0 3px 3px 0;
+}

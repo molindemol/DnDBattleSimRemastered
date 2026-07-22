@@ -1,0 +1,130 @@
+@use 'tokens' as *;
+
+.modalOverlay{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(24, 15, 8, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    z-index: 1000;
+}
+
+.modal{
+    @include panel;
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+    max-height: calc(100dvh - 2rem);
+    overflow-y: auto;
+
+    h2{
+        font-family: var(--font-display), serif;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+    }
+}
+
+.fields{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.numberRow{
+    display: flex;
+    gap: 1rem;
+
+    .field{
+        flex: 1;
+    }
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    label{
+        @include field-label;
+    }
+
+    input{
+        padding: 0.5rem 0.75rem;
+        background: rgba(255, 252, 243, 0.85);
+        border: 1px solid var(--ink-soft);
+        border-radius: 3px;
+        width: 100%;
+    }
+}
+
+.dropzone{
+    border: 2px dashed var(--ink-soft);
+    border-radius: 3px;
+    padding: 1.5rem;
+    text-align: center;
+    background-color: rgba(233, 213, 174, 0.35);
+    margin-bottom: 1rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+    position: relative;
+
+    p{
+        margin: 0;
+        color: var(--ink-soft);
+    }
+
+    &:hover,
+    &.dragOver{
+        border-color: var(--gold);
+        background-color: rgba(185, 138, 46, 0.15);
+    }
+}
+
+.fileInput{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.imagePreview{
+    text-align: center;
+    margin-bottom: 1rem;
+
+    img{
+        height: 120px;
+        width: 120px;
+        object-fit: cover;
+        border-radius: 3px;
+        border: 2px solid var(--ink-soft);
+    }
+}
+
+.modalButtons{
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.confirmButton{
+    @include action-button;
+    font-size: 1.1rem;
+
+    &:disabled{
+        background: var(--ink-soft);
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.cancelButton{
+    @include ghost-button;
+    padding: 0.55rem 1.5rem;
+    font-size: 1.1rem;
+}

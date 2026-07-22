@@ -23,6 +23,19 @@
     align-content: flex-start;
 }
 
+.addButton{
+    @include ghost-button;
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    font-size: 1.15rem;
+    border-style: dashed;
+    background: transparent;
+
+    &:hover{
+        background: rgba(233, 213, 174, 0.5);
+    }
+}
+
 .searchInput{
     padding: 0.6rem 1rem;
     font-size: 1.1rem;
