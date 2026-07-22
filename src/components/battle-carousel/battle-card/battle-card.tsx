@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 'use client'
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 import Character from '@interfaces/character';
 import css from './battle-card.module.scss'
 import Image from 'next/image';
@@ -16,18 +15,11 @@ export default function BattleCard(props: BattleCardProps) {
   const {character, updateCharacters, removeCharacters, isSelected } = props;
   const {id, name, image, ally, hp} = character
 
-  const [currentHp, setCurrentHp] = useState<number>(hp ?? 0);
-
-  useEffect(() => {
-       setCurrentHp(hp ?? 0);
-  }, [hp]);
-
   const handleHpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value || '0', 10);
     if (Number.isNaN(value)) return;
-    setCurrentHp(value);
     updateCharacters(id, { hp: value });
-  } 
+  }
 
   const handleDead = useCallback(() => {
     if (ally){
@@ -35,9 +27,7 @@ export default function BattleCard(props: BattleCardProps) {
     } else{
       removeCharacters(id)
     }
-          
   },[removeCharacters, id, ally, updateCharacters])
-  
 
   return (
     <div className={css.root} style={{transform: isSelected ? 'translateY(-.9rem)' : ''}}>
@@ -45,12 +35,12 @@ export default function BattleCard(props: BattleCardProps) {
         <Image className={css.image} alt={`${name} image`} src={image} width={2000} height={2000} />
         <p style={{fontSize: name.length > 10 ? '10px' : ''}}>{name}</p>
       </div>
-        
+
         <div className={css.bottom}>
             {!ally && (
               <div className={css.health}>
                 <label>HP:</label>
-                <input type="number" min={0} value={currentHp} onChange={handleHpChange} />
+                <input type="number" min={0} value={hp ?? 0} onChange={handleHpChange} />
               </div>
             )}
             <button onClick={handleDead}>Dead</button>
